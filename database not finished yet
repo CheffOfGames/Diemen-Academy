@@ -1,0 +1,92 @@
+CREATE TABLE `student` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `first_name` varchar(50) not null,
+  `last_name` varchar(50) not null,
+  `date_of_birth` date not null,
+  `nationality` varchar(30) not null,
+  `gender` varchar(15) not null,
+  `email` varchar(30) not null,
+  `start_year` date not null,
+  `studycounselor` varchar(50) null,
+  `study_id` int,
+  `adress_id` int
+);
+
+CREATE TABLE `study` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `study_name` varchar(50) not null,
+  `description` varchar(255) not null,
+  `language` varchar(50) not null,
+  `no_of_years` int ,
+  `course_id` int
+);
+
+CREATE TABLE `StudyCourse` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `study_id` int not null,
+  `course_id` int not null
+);
+
+CREATE TABLE `course` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `course_name` varchar(50) not null,
+  `description` varchar(255) null,
+  `credits` int,
+  `teacher_id` int
+);
+
+CREATE TABLE `teacher` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `first_name` varchar(50) not null,
+  `last_name` varchar(50) not null,
+  `date_of_birth` date  not null,
+  `nationality` varchar(50) not null,
+  `gender` varchar(15) not null,
+  `salary` int not null,
+  `study_counselor` varchar(50) null,
+  `adress_id` int
+);
+
+CREATE TABLE `result` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `grade` int not null,
+  `passed` varchar(10) not null,
+  `student_id` int,
+  `exam_id` int
+);
+
+CREATE TABLE `exam` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `room` varchar(15) not null,
+  `resit` varchar(50) not null,
+  `date` date not null,
+  `time` time not null,
+  `course_id` int
+);
+
+CREATE TABLE `adress` (
+  `id` int not null auto_increment PRIMARY KEY,
+  `street` varchar(50) not null,
+  `house_number` int not null,
+  `postal_code` int not null,
+  `city` varchar(30) not null,
+  `phone` int
+);
+
+ALTER TABLE `result` ADD FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
+
+ALTER TABLE `result` ADD FOREIGN KEY (`exam_id`) REFERENCES `exam` (`id`);
+
+ALTER TABLE `exam` ADD FOREIGN KEY (`course_id`) REFERENCES `course` (`id`);
+
+ALTER TABLE `student` ADD FOREIGN KEY (`study_id`) REFERENCES `study` (`id`);
+
+ALTER TABLE `study` ADD FOREIGN KEY (`id`) REFERENCES `StudyCourse` (`study_id`);
+
+ALTER TABLE `course` ADD FOREIGN KEY (`id`) REFERENCES `StudyCourse` (`course_id`);
+
+ALTER TABLE `course` ADD FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`);
+
+ALTER TABLE `student` ADD FOREIGN KEY (`adress_id`) REFERENCES `adress` (`id`);
+
+ALTER TABLE `adress` ADD FOREIGN KEY (`id`) REFERENCES `teacher` (`adress_id`);
