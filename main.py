@@ -8,7 +8,7 @@ from scheduleScreen import *
 from subjectScreen import *
 
 # Define variables
-background_color = "white"
+background_color = "White"
 screens = (EnrollScreen, GradesScreen, HomeScreen, LoginScreen, ProfileScreen, ScheduleScreen, SubjectScreen)
 
 # Start windows
@@ -16,7 +16,6 @@ root = Tk()
 height, width = int(root.winfo_screenheight() * 0.75), int(root.winfo_screenwidth() * 0.75)
 x_pos, y_pos = int(width / 8), int(height / 8)
 root.resizable(0,0)
-root.title("Main screen")
 root.geometry(f"{width}x{height}+{x_pos}+{y_pos}")
 
 # Set frames + canvas
