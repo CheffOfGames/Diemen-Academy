@@ -1,6 +1,6 @@
 from tkinter import *
-from blankPage import *
+from blankScreen import *
 
 class EnrollScreen(Screen):
-    def __init__(self, root: Tk, frame: Frame, canvas: Canvas, screens: set):
-        super().__init__(root, frame, canvas, screens)
+    def __init__(self, root: Tk, frame: Frame, screens: tuple):
+        super().__init__(root, frame, screens)
