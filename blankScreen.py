@@ -5,7 +5,7 @@ logo_background = "White"
 button_background = "Blue"
 
 class Screen:
-    def __init__(self, root:Tk, frame:Frame, screens:tuple):
+    def __init__(self, root:Tk, frame:Frame, screens:dict):
         self.root = root
         self.frame = frame
         self.screens = screens
@@ -25,7 +25,7 @@ class Screen:
         self.canvas.pack()
 
     def changeScreen(self, screen):
-        if screen not in self.screens :
+        if not self.screens.get(screen) :
             raise KeyError("This screen does not exist.")
         #self.canvas.delete("all")
-        self.canvas = screen(self.root, self.frame, self.screens)
+        self.canvas = self.screens[screen](self.root, self.frame, self.screens)
