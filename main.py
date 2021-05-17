@@ -9,7 +9,7 @@ from subjectScreen import *
 
 # Define variables
 background_color = "White"
-screens = (EnrollScreen, GradesScreen, HomeScreen, LoginScreen, ProfileScreen, ScheduleScreen, SubjectScreen)
+screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen}
 
 # Start windows
 root = Tk()
@@ -27,28 +27,25 @@ ui_root.geometry(f"{ui_width}x{ui_height}+{ui_x_pos}+{ui_y_pos}")
 # Set frames + canvas
 frame = Frame(root, width=width, height=height, bg=background_color)
 frame.pack()
-ui_frame = Frame(root, width=ui_width, height=ui_height)
-frame.pack()
+ui_frame = Frame(ui_root, width=ui_width, height=ui_height)
+ui_frame.pack()
 
 # Current page
 current_page = EnrollScreen(root, frame, screens)
 
-# # Change page
-# screens_list = []
-# for i in range(len(screens)) :
-#     screens_list += str(i)
+# Change page
+screens_list = ["Home", "Enroll", "Grades", "Login", "Profile", "Schedule", "Subject"]
 
-# var = StringVar(ui_root)
-# var.set(screens_list[0])
+var = StringVar(ui_root)
+var.set(screens_list[0])
 
-# screens_menu = OptionMenu(ui_frame, var, *screens_list)
-# screens_menu.config(width=int(ui_width/2))
-# screens_menu.pack(side="top")
+screens_menu = OptionMenu(ui_frame, var, *screens_list)
+screens_menu.config(width=int(ui_width/2))
+screens_menu.pack(side="top")
 
-# def callback(*args) :
-#     current_page.changeScreen(var.get())
-
-# var.trace("w", callback)
+def callback(*args) :
+    current_page.changeScreen(var.get())
+var.trace("w", callback)
 
 # End of file
 root.mainloop()
