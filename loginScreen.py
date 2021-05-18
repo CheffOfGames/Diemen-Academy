@@ -16,3 +16,10 @@ class LoginScreen(Screen):
 
         # Submit button
         self.login_button = Button(self.frame, text="Submit", command=lambda: self.changeScreen("Home")).place(x=(self.width/2.05), y=(self.height/2.1))
+
+        # Add frame objects to list
+        self.frame_objects.append(self.user_label)
+        self.frame_objects.append(self.user_entry)
+        self.frame_objects.append(self.pass_label)
+        self.frame_objects.append(self.pass_entry)
+        self.frame_objects.append(self.login_button)
