@@ -4,14 +4,15 @@ from blankScreen import *
 class LoginScreen(Screen):
     def __init__(self, root: Tk, frame: Frame, screens: tuple):
         super().__init__(root, frame, screens)
-        self.canvas.create_rectangle((self.width/2.3), (self.height/3), (self.width/1.7), (self.height/2))
+        self.canvas.create_rectangle((self.width/2.35), (self.height/2.75), (self.width/1.65), (self.height/1.9)) # Rect around login field
 
-        self.entry1 = Entry(root)
-        self.entry2 = Entry(root)
-        label1 = Label(root,text="Student Number")
-        label1.place(x=(self.width/2.3), y=(self.height/2.5))
-        self.entry1.place(x=(self.width/2), y=(self.height/2.5))
+        # Enter username field
+        self.user_label = Label(root,text="Student Number:").place(x=(self.width/2.31), y=(self.height/2.5))
+        self.user_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5))
 
-        label2 = Label(root,text="Password")
-        label2.place(x=(self.width/2.3),y= (self.height/2.3))
-        self.entry2.place(x=(self.width/2), y=(self.height/2.3))
+        # Enter password field
+        self.pass_label = Label(root,text="Password:").place(x=(self.width/2.31),y= (self.height/2.3))
+        self.pass_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.3))
+
+        # Submit button
+        self.login_button = Button(self.frame, text="Submit", command=lambda: self.changeScreen("Home")).place(x=(self.width/2.05), y=(self.height/2.1))
