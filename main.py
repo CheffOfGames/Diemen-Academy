@@ -37,7 +37,11 @@ current_page = EnrollScreen(root, frame, screens)
 screens_list = ["Home", "Enroll", "Grades", "Login", "Profile", "Schedule", "Subject"]
 
 var = StringVar(ui_root)
-var.set(screens_list[0])
+start_val = 0
+for i in range(len(screens)) :
+    if screens[screens_list[i]] == type(current_page) :
+        start_val = i
+var.set(screens_list[start_val])
 
 screens_menu = OptionMenu(ui_frame, var, *screens_list)
 screens_menu.config(width=int(ui_width/2))
