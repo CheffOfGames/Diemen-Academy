@@ -2,8 +2,9 @@ from tkinter import *
 from blankScreen import *
 
 class HomeScreen(Screen):
-    def __init__(self, root: Tk, frame: Frame, screens: tuple, user: int):
-        super().__init__(root, frame, screens)
+    def __init__(self, root: Tk, frame: Frame, screens: dict, database, user: int):
+        super().__init__(root, frame, screens, database)
+        self.root.title("Home Screen")
         self.usertypes = {0: "Student", 1: "Teacher", 2: "Administrator"}
         try :
             self.usertype = self.usertypes[user]

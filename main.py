@@ -31,7 +31,7 @@ ui_frame = Frame(ui_root, width=ui_width, height=ui_height)
 ui_frame.pack()
 
 # Current page
-current_page = EnrollScreen(root, frame, screens)
+current_page = LoginScreen(root, frame, screens, database)
 
 # Change page
 screens_list = ["Home", "Enroll", "Grades", "Login", "Profile", "Schedule", "Subject"]

@@ -2,8 +2,9 @@ from tkinter import *
 from blankScreen import *
 
 class GradesScreen(Screen):
-    def __init__(self, root: Tk, frame: Frame, screens: tuple):
-        super().__init__(root, frame, screens)
+    def __init__(self, root: Tk, frame: Frame, screens: dict, database):
+        super().__init__(root, frame, screens, database)
+        self.root.title("Grades Screen")
         exams = [1,2,3,4,5]
         place = self.height/6
         for i in range (len(exams)):
