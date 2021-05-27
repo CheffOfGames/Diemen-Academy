@@ -2,8 +2,8 @@ from tkinter import *
 from blankScreen import *
 
 class LoginScreen(Screen):
-    def __init__(self, root: Tk, frame: Frame, screens: dict, database):
-        super().__init__(root, frame, screens, database)
+    def __init__(self, root: Tk, screens: dict, database):
+        super().__init__(root, screens, database)  
         self.canvas.create_rectangle((self.width/2.35), (self.height/2.75), (self.width/1.65), (self.height/1.9)) # Rect around login field
         self.root.title("Login Screen")
 
@@ -27,5 +27,8 @@ class LoginScreen(Screen):
         self.frame_objects.append(self.login_button)
 
     def login(self):
-        self.current_user = self.user_entry.get()
+        try: 
+            self.current_user = self.user_entry.get()
+        except:
+            print("small error")
         self.changeScreen("Home")

@@ -2,8 +2,8 @@ from tkinter import *
 from blankScreen import *
 
 class GradesScreen(Screen):
-    def __init__(self, root: Tk, frame: Frame, screens: dict, database):
-        super().__init__(root, frame, screens, database)
+    def __init__(self, root: Tk, screens: dict, database):
+        super().__init__(root, screens, database)  
         self.root.title("Grades Screen")
         exams = [1,2,3,4,5]
         place = self.height/6

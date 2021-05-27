@@ -2,8 +2,8 @@ from tkinter import *
 from blankScreen import *
 
 class ProfileScreen(Screen):
-    def __init__(self, root: Tk, frame: Frame, screens: dict, database):
-        super().__init__(root, frame, screens, database)
+    def __init__(self, root: Tk, screens: dict, database):
+        super().__init__(root, screens, database)  
         self.root.title("Profile Screen")
         self.label = Label(self.root, text="Name \nLast Name \nAdres")
         self.label.place(x =(self.width/4) , y= (self.height/7))

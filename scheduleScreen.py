@@ -5,8 +5,8 @@ from datetime import *
 from calendar import monthrange
 
 class ScheduleScreen(Screen):
-    def __init__(self, root: Tk, frame: Frame, screens: dict, database):
-        super().__init__(root, frame, screens, database, database)
+    def __init__(self, root: Tk, screens: dict, database):
+        super().__init__(root, screens, database)  
         self.root.title("Schedule Screen")
         self.part_row1 = self.width/9
         place = self.part_row1

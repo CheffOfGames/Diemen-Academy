@@ -8,7 +8,6 @@ from scheduleScreen import *
 from subjectScreen import *
 
 # Define variables
-background_color = "White"
 screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen}
 database = ""
 
@@ -25,14 +24,12 @@ ui_root = Tk()
 ui_root.resizable(0,0)
 ui_root.geometry(f"{ui_width}x{ui_height}+{ui_x_pos}+{ui_y_pos}")
 
-# Set frames + canvas
-frame = Frame(root, width=width, height=height, bg=background_color)
-frame.pack()
+# Set frames
 ui_frame = Frame(ui_root, width=ui_width, height=ui_height)
 ui_frame.pack()
 
 # Current page
-current_page = LoginScreen(root, frame, screens, database)
+current_page = LoginScreen(root, screens, database)
 
 # Change page
 screens_list = ["Home", "Enroll", "Grades", "Login", "Profile", "Schedule", "Subject"]
