@@ -10,6 +10,7 @@ from subjectScreen import *
 # Define variables
 background_color = "White"
 screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen}
+database = ""
 
 # Start windows
 root = Tk()
