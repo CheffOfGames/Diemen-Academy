@@ -6,6 +6,8 @@ from loginScreen import *
 from profileScreen import *
 from scheduleScreen import *
 from subjectScreen import *
+import mysql.connector
+
 
 # Define variables
 screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen}
@@ -18,8 +20,15 @@ x_pos, y_pos = int(width / 24), int(height / 8)
 root.resizable(0,0)
 root.geometry(f"{width}x{height}+{x_pos}+{y_pos}")
 
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="password!", #your own pw
+  database="world" 
+  )
+
 # Current page
-current_page = LoginScreen(root, screens, database)
+current_page = LoginScreen(root, screens, mydb)
 
 # Change page
 screens_list = ["Home", "Enroll", "Grades", "Login", "Profile", "Schedule", "Subject"]

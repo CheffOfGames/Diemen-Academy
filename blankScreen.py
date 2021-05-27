@@ -1,4 +1,5 @@
 from tkinter import *
+import mysql.connector
 
 top_bar_color = "Red"
 logo_background = "White"
@@ -12,7 +13,7 @@ class Screen:
         self.database = database
         self.frame_objects = []
         self.current_user = ""
-
+        self.cursor = database.cursor() 
         self.root.title("Blank Screen")
         
         self.root.update()

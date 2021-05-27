@@ -1,5 +1,6 @@
 from tkinter import *
 from blankScreen import *
+import mysql.connector
 
 class GradesScreen(Screen):
     def __init__(self, root: Tk, screens: dict, database):
@@ -7,6 +8,11 @@ class GradesScreen(Screen):
         self.root.title("Grades Screen")
         exams = [1,2,3,4,5]
         place = self.height/6
+        self.cursor.execute("SHOW TABLES") 
+
+        tables = self.cursor.fetchall() 
+        print (tables[0][0])
+
         for i in range (len(exams)):
             if i%2 == 0:
                 self.canvas.create_rectangle(-1,place-self.height/20,self.width+1,place+self.height/20, fill="light grey", outline="")
