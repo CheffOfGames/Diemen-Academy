@@ -5,31 +5,40 @@ class AdminTeacherScreen(Screen):
         super().__init__(root, screens, database, user=user, usertype=usertype)
         
         self.id_label = Label(root,text="Teacher ID:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-4))
-        self.id_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-4))
+        self.id_entry = Entry(root)
+        self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-4))
 
         self.name_label = Label(root,text="Teacher Name:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-3))
-        self.name_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-3))
+        self.name_entry = Entry(root)
+        self.name_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-3))
 
         self.lastname_label = Label(root,text="Teacher Last Name:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-2))
-        self.lastname_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
+        self.lastname_entry = Entry(root)
+        self.lastname_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
 
         self.dob_label = Label(root,text="Teacher Date of Birth:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-1))
-        self.dob_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
+        self.dob_entry = Entry(root)
+        self.dob_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
 
         self.nat_label = Label(root,text="Teacher Nationality:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*0))
-        self.nat_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*0))
+        self.nat_entry = Entry(root)
+        self.nat_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*0))
 
         self.gender_label = Label(root,text="Teacher Gender:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*1))
-        self.gender_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*1))
+        self.gender_entry = Entry(root)
+        self.gender_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*1))
 
         self.salary_label = Label(root,text="Teacher Salary:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
-        self.salary_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*2))
+        self.salary_entry = Entry(root)
+        self.salary_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*2))
 
         self.couns_label = Label(root,text="Teacher Student Counselor:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*3))
-        self.couns_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)((self.height*0.034)*3))
+        self.couns_entry = Entry(root)
+        self.couns_entry.place(x=(self.width/2), y=(self.height/2.5)((self.height*0.034)*3))
 
         self.adress_label = Label(root,text="Teacher Adress:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*4))
-        self.adress_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*4))
+        self.adress_entry = Entry(root)
+        self.adress_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*4))
 
         self.frame_objects.append(self.id_label)
         self.frame_objects.append(self.id_entry)

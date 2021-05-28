@@ -5,19 +5,24 @@ class AdminCourseScreen(Screen):
         super().__init__(root, screens, database, user=user, usertype=usertype)
 
         self.id_label = Label(root,text="Course ID:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-2))
-        self.id_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
+        self.id_entry = Entry(root)
+        self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
 
         self.name_label = Label(root,text="Course Name:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-1))
-        self.name_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
+        self.name_entry = Entry(root)
+        self.name_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
 
         self.desc_label = Label(root,text="Course Description:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*0))
-        self.desc_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*0))
+        self.desc_entry = Entry(root)
+        self.desc_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*0))
 
         self.cred_label = Label(root,text="Course Credits:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*1))
-        self.cred_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*1))
+        self.cred_entry = Entry(root)
+        self.cred_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*1))
 
         self.teacher_label = Label(root,text="Course Teacher:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
-        self.teacher_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*2))
+        self.teacher_entry = Entry(root)
+        self.teacher_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*2))
 
         self.frame_objects.append(self.id_label)
         self.frame_objects.append(self.id_entry)
