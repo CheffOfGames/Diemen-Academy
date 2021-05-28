@@ -24,6 +24,7 @@ root.resizable(0,0)
 root.geometry(f"{width}x{height}+{x_pos}+{y_pos}")
 
 # Connect to database
+mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="password!", #your own pw

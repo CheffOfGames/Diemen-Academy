@@ -13,8 +13,8 @@ class Screen:
         
         # Set variables
         self.current_user = ""
-        self.cursor = database.cursor() 
-        self.root.title("Blank Screen")
+        self.current_usertype = -1
+        self.cursor = database.cursor()
         
         self.root.title("Blank Screen") # Change root title
         
