@@ -8,9 +8,14 @@ class SubjectScreen(Screen):
         self.part_row1 = self.width/(9)
         place_rec = self.part_row1
         H = 0
-        for i in range (9):
+        
+        self.cursor.execute(f"select course_name from course where fk_teacher_id = {self.current_user}")
+        subjects = self.cursor.fetchall()
+        print (subjects)
+
+        for i in range (len(subjects)):
             self.canvas.create_rectangle(place_rec, self.height/8+ H, place_rec+self.part_row1, self.height/2.5+ H)
-            label_name = Label(root,text="subject name")
+            label_name = Label(root,text=f"{subjects[i][0]}")
             label_time = Label(root,text="time")
             label_date = Label(root,text="day")
 
