@@ -11,16 +11,15 @@ import mysql.connector
 
 # Define variables
 screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen}
-database = ""
 
-# Start windows
+# Set the starting screen
 root = Tk()
 height, width = int(root.winfo_screenheight() * 0.75), int(root.winfo_screenwidth() * 0.75)
-x_pos, y_pos = int(width / 24), int(height / 8)
+x_pos, y_pos = int((root.winfo_screenwidth()-width)/2), int((root.winfo_screenheight()-height)/2)
 root.resizable(0,0)
 root.geometry(f"{width}x{height}+{x_pos}+{y_pos}")
 
-mydb = mysql.connector.connect(
+# Connect to database
   host="localhost",
   user="root",
   password="password!", #your own pw
@@ -29,9 +28,6 @@ mydb = mysql.connector.connect(
 
 # Current page
 current_page = LoginScreen(root, screens, mydb)
-
-# Change page
-screens_list = ["Home", "Enroll", "Grades", "Login", "Profile", "Schedule", "Subject"]
 
 # End of file
 root.mainloop()
