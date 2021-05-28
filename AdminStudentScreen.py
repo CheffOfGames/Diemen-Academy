@@ -1,84 +1,49 @@
-
 from tkinter import *
 from blankScreen import *
 class AdminStudentScreen(Screen):
     def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
         super().__init__(root, screens, database, user=user, usertype=usertype)
         
-        self.id_label = Label(root,text="Student Number:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-5))
-        self.id_entry = Entry(root)
+        self.id_label = Label(self.frame,text="Student Number:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-5))
+        self.id_entry = Entry(self.frame)
         self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-5))
 
-        self.name_label = Label(root,text="Student Name:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-4))
-        self.user_entry = Entry(root)
+        self.name_label = Label(self.frame,text="Student Name:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-4))
+        self.user_entry = Entry(self.frame)
         self.name_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-4))
 
-        self.lastname_label = Label(root,text="Student Last Name:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-3))
-        self.lastname_entry = Entry(root)
+        self.lastname_label = Label(self.frame,text="Student Last Name:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-3))
+        self.lastname_entry = Entry(self.frame)
         self.lastname_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-3))
 
-        self.dob_label = Label(root,text="Student Date of Birth:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-2))
-        self.dob_entry = Entry(root)
+        self.dob_label = Label(self.frame,text="Student Date of Birth:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-2))
+        self.dob_entry = Entry(self.frame)
         self.dob_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
 
-        self.nat_label = Label(root,text="Student Nationality:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-1))
-        self.nat_entry = Entry(root)
+        self.nat_label = Label(self.frame,text="Student Nationality:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-1))
+        self.nat_entry = Entry(self.frame)
         self.nat_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
 
-        self.gender_label = Label(root,text="Student Gender:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*0))
-        self.gender_entry = Entry(root)
+        self.gender_label = Label(self.frame,text="Student Gender:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*0))
+        self.gender_entry = Entry(self.frame)
         self.gender_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*0))
 
-        self.email_label = Label(root,text="Student Email:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*1))
-        self.email_entry = Entry(root)
+        self.email_label = Label(self.frame,text="Student Email:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*1))
+        self.email_entry = Entry(self.frame)
         self.email_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*1))
 
-        self.start_label = Label(root,text="Student Start Year:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
-        self.start_entry = Entry(root)
+        self.start_label = Label(self.frame,text="Student Start Year:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+        self.start_entry = Entry(self.frame)
         self.start_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*2))
 
-        self.couns_label = Label(root,text="Student Study Counselor:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*3))
-        self.couns_entry = Entry(root)
+        self.couns_label = Label(self.frame,text="Student Study Counselor:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*3))
+        self.couns_entry = Entry(self.frame)
         self.couns_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*3))
 
-        self.study_label = Label(root,text="Student Study:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*4))
-        self.study_entry = Entry(root)
+        self.study_label = Label(self.frame,text="Student Study:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*4))
+        self.study_entry = Entry(self.frame)
         self.study_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*4))
 
-        self.adress_label = Label(root,text="Student Adress:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*5))
-        self.adress_entry = Entry(root)
+        self.adress_label = Label(self.frame,text="Student Adress:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*5))
+        self.adress_entry = Entry(self.frame)
         self.adress_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*5))
-
-        #adding stuff to list
-        self.frame_objects.append(self.id_label)
-        self.frame_objects.append(self.id_entry)
-        
-        self.frame_objects.append(self.name_label)
-        self.frame_objects.append(self.name_entry)
-
-        self.frame_objects.append(self.lastname_label)
-        self.frame_objects.append(self.lastname_entry)
-
-        self.frame_objects.append(self.dob_label)
-        self.frame_objects.append(self.dob_entry)
-        
-        self.frame_objects.append(self.nat_label)
-        self.frame_objects.append(self.nat_entry)
-
-        self.frame_objects.append(self.gender_label)
-        self.frame_objects.append(self.gender_entry)
-
-        self.frame_objects.append(self.email_label)
-        self.frame_objects.append(self.email_entry)
-
-        self.frame_objects.append(self.start_label)
-        self.frame_objects.append(self.start_entry)
-
-        self.frame_objects.append(self.couns_label)
-        self.frame_objects.append(self.couns_entry)
-
-        self.frame_objects.append(self.study_label)
-        self.frame_objects.append(self.study_entry)
-
-        self.frame_objects.append(self.adress_label)
-        self.frame_objects.append(self.adress_entry)
