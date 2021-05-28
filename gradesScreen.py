@@ -3,8 +3,8 @@ from blankScreen import *
 import mysql.connector
 
 class GradesScreen(Screen):
-    def __init__(self, root: Tk, screens: dict, database):
-        super().__init__(root, screens, database)  
+    def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
+        super().__init__(root, screens, database, user=user, usertype=usertype)
         self.root.title("Grades Screen")
         place = self.height/6
 

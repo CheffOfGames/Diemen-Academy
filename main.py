@@ -6,15 +6,14 @@ from loginScreen import *
 from profileScreen import *
 from scheduleScreen import *
 from subjectScreen import *
-from AdminStudentScreen import *
-from AdminTeacherScreen import *
 from AdminCourseScreen import *
 from AdminGradesScreen import *
-import mysql.connector
+from AdminStudentScreen import *
+from AdminTeacherScreen import *
 
 
 # Define variables
-screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen}
+screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen, "AdminCourse":AdminCourseScreen, "AdminGrades":AdminGradesScreen, "AdminStudent":AdminStudentScreen, "AdminTeacher":AdminTeacherScreen}
 
 # Set the starting screen
 root = Tk()

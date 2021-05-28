@@ -1,6 +1,0 @@
-
-from tkinter import *
-from blankScreen import *
-class [CLASSNAME](Screen):
-    def _init_(self, root: Tk, screens: dict, database):
-        super()._init_(root, screens, database)`

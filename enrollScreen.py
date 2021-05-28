@@ -2,8 +2,8 @@ from tkinter import *
 from blankScreen import *
 
 class EnrollScreen(Screen):
-    def __init__(self, root: Tk, screens: dict, database):
-        super().__init__(root, screens, database)  
+    def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
+        super().__init__(root, screens, database, user=user, usertype=usertype)
         self.root.title("Enroll Screen")
         enrollments = len([1,2,3,4,5,6,7,8])
         self.part_row1 = self.width/(9)

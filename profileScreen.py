@@ -2,8 +2,8 @@ from tkinter import *
 from blankScreen import *
 
 class ProfileScreen(Screen):
-    def __init__(self, root: Tk, screens: dict, database):
-        super().__init__(root, screens, database)  
+    def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
+        super().__init__(root, screens, database, user=user, usertype=usertype)
         self.root.title("Profile Screen")
 
         self.cursor.execute(f"  select a.first_name, a.last_name, a.date_of_birth, a.nationality, a.gender, a.email, a.start_year, b.study_name, a.studycounselor, c.street, c.house_number, c.postal_code, c.city, c.phone\

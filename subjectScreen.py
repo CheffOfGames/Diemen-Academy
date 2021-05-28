@@ -2,8 +2,8 @@ from tkinter import *
 from blankScreen import *
 
 class SubjectScreen(Screen):
-    def __init__(self, root: Tk, screens: dict, database):
-        super().__init__(root, screens, database)  
+    def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
+        super().__init__(root, screens, database, user=user, usertype=usertype)
         self.root.title("Subject Screen")
         self.part_row1 = self.width/(9)
         place_rec = self.part_row1

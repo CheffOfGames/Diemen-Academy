@@ -1,8 +1,8 @@
 from tkinter import *
 from blankScreen import *
 class AdminGradesScreen(Screen):
-    def _init_(self, root: Tk, screens: dict, database):
-        super()._init_(root, screens, database)
+    def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
+        super().__init__(root, screens, database, user=user, usertype=usertype)
         
         self.id_label = Label(root,text="Grade ID:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*-2))
         self.id_entry = Entry(root).place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
