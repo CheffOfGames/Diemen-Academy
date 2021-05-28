@@ -6,6 +6,10 @@ from loginScreen import *
 from profileScreen import *
 from scheduleScreen import *
 from subjectScreen import *
+from AdminStudentScreen import *
+from AdminTeacherScreen import *
+from AdminCourseScreen import *
+from AdminGradesScreen import *
 import mysql.connector
 
 
