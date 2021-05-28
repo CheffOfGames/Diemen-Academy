@@ -13,7 +13,6 @@ class Screen:
         self.root, self.screens, self.database = root, screens, database
         self.current_user, self.current_usertype = user, usertype
         self.cursor = database.cursor()
-        
         self.root.title("Blank Screen") # Change root title
         
         # Set height/width for frame
@@ -45,7 +44,9 @@ class Screen:
         self.frame.destroy()
         # Navigation to home needs user, otherwise gives error
         if user != self.current_user :
-            self = self.screens[screen](self.root, self.screens, self.database, user, self.current_usertype)
+            print(self.current_user)
+            self = self.screens[screen](self.root, self.screens, self.database, self.current_user, user)
+            print(self.current_user)
         else :
             self = self.screens[screen](self.root, self.screens, self.database, self.current_user, self.current_usertype)
 

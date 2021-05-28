@@ -7,7 +7,7 @@ class HomeScreen(Screen):
         self.root.title("Home Screen")
         self.usertypes = {0: "Student", 1: "Teacher", 2: "Administrator"}
         try :
-            self.usertype = self.usertypes[user]
+            self.usertype = self.usertypes[usertype]
         except KeyError :
             print("Unknown usertype.")
             self.changeScreen("Login")
