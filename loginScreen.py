@@ -4,21 +4,21 @@ from blankScreen import *
 class LoginScreen(Screen):
     def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
         super().__init__(root, screens, database, user=user, usertype=usertype)
-        self.canvas.create_rectangle((self.width/2.35), (self.height/2.75), (self.width/1.65), (self.height/1.9)) # Rect around login field
+        self.canvas.create_rectangle((self.width/2.75), (self.height/2.75), (self.width-self.width/2.75), (self.height/1.75)) # Rect around login field
         self.root.title("Login Screen")
 
         # Enter username field
-        self.user_label = Label(root,text="Student Number:").place(x=(self.width/2.31), y=(self.height/2.5))
+        self.user_label = Label(root,text="Student Number:").place(x=(self.width/2.70), y=(self.height/2.5))
         self.user_entry = Entry(root)
         self.user_entry.place(x=(self.width/2), y=(self.height/2.5))
 
         # Enter password field
-        self.pass_label = Label(root,text="Password:").place(x=(self.width/2.31),y= (self.height/2.3))
+        self.pass_label = Label(root,text="Password:").place(x=(self.width/2.70),y= (self.height/2.3))
         self.pass_entry = Entry(root)
         self.pass_entry.place(x=(self.width/2), y=(self.height/2.3))
 
         # Submit button
-        self.login_button = Button(self.frame, text="Submit", command=lambda: self.login()).place(x=(self.width/2.05), y=(self.height/2.1))
+        self.login_button = Button(self.frame, text="Submit", command=lambda: self.login()).place(x=(self.width/2), y=(self.height/1.9), anchor='center')
 
     def login(self):
         self.current_user = str(self.user_entry.get()).lower()
