@@ -44,9 +44,7 @@ class Screen:
         self.frame.destroy()
         # Navigation to home needs user, otherwise gives error
         if user != self.current_user :
-            print(self.current_user)
             self = self.screens[screen](self.root, self.screens, self.database, self.current_user, user)
-            print(self.current_user)
         else :
             self = self.screens[screen](self.root, self.screens, self.database, self.current_user, self.current_usertype)
 

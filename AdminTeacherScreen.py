@@ -4,11 +4,11 @@ class AdminTeacherScreen(Screen):
     def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
         super().__init__(root, screens, database, user=user, usertype=usertype)
         
-        self.id_label = Label(self.frame,text="Teacher ID:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-4))
-        self.id_entry = Entry(self.fram)
-        self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-4))
+        # self.id_label = Label(self.frame,text="Teacher ID:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-4))
+        # self.id_entry = Entry(self.frame)
+        # self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-4))
 
-        self.name_label = Label(self.fram,text="Name:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-3))
+        self.name_label = Label(self.frame,text="Name:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-3))
         self.name_entry = Entry(self.frame)
         self.name_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-3))
 
@@ -16,7 +16,7 @@ class AdminTeacherScreen(Screen):
         self.lastname_entry = Entry(self.frame)
         self.lastname_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
 
-        self.dob_label = Label(self.frame,text="Date of Birth:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-1))
+        self.dob_label = Label(self.frame,text="Date of Birth (year-month-day):").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-1))
         self.dob_entry = Entry(self.frame)
         self.dob_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
 
@@ -58,53 +58,64 @@ class AdminTeacherScreen(Screen):
 
         self.submit_button = Button(root, text="Submit", command=lambda: self.submit_info()).place(x=(self.width/2), y=(6*self.height/7), anchor='center')
  
-        self.frame_object.append(self.id_label)
-        self.frame_object.append(self.id_entry)
+# i think everything here that is commented out can be deleted...
+        # self.frame_object.append(self.id_label)
+        # self.frame_object.append(self.id_entry)
 
-        self.frame_object.append(self.name_label)
-        self.frame_object.append(self.name_entry)
+        # self.frame_object.append(self.name_label)
+        # self.frame_object.append(self.name_entry)
 
-        self.frame_object.append(self.lastname_label)
-        self.frame_object.append(self.lastname_entry)
+        # self.frame_object.append(self.lastname_label)
+        # self.frame_object.append(self.lastname_entry)
 
-        self.frame_object.append(self.dob_label)
-        self.frame_object.append(self.dob_entry)
+        # self.frame_object.append(self.dob_label)
+        # self.frame_object.append(self.dob_entry)
 
-        self.frame_object.append(self.nat_label)
-        self.frame_object.append(self.nat_entry)
+        # self.frame_object.append(self.nat_label)
+        # self.frame_object.append(self.nat_entry)
 
-        self.frame_object.append(self.gender_label)
-        self.frame_object.append(self.gender_entry)
+        # self.frame_object.append(self.gender_label)
+        # self.frame_object.append(self.gender_entry)
 
-        self.frame_object.append(self.salary_label)
-        self.frame_object.append(self.salary_entry)
+        # self.frame_object.append(self.salary_label)
+        # self.frame_object.append(self.salary_entry)
 
-        self.frame_object.append(self.couns_label)
-        self.frame_object.append(self.couns_entry)
+        # self.frame_object.append(self.couns_label)
+        # self.frame_object.append(self.couns_entry)
 
-        self.frame_object.append(self.postalcode_label)
-        self.frame_object.append(self.postalcode_entry)
+        # self.frame_object.append(self.postalcode_label)
+        # self.frame_object.append(self.postalcode_entry)
 
-        self.frame_object.append(self.street_label)
-        self.frame_object.append(self.street_entry)
+        # self.frame_object.append(self.street_label)
+        # self.frame_object.append(self.street_entry)
 
-        self.frame_object.append(self.housenumber_label)
-        self.frame_object.append(self.housenumber_entry)
+        # self.frame_object.append(self.housenumber_label)
+        # self.frame_object.append(self.housenumber_entry)
 
-        self.frame_object.append(self.city_label)
-        self.frame_object.append(self.city_entry)
+        # self.frame_object.append(self.city_label)
+        # self.frame_object.append(self.city_entry)
 
-        self.frame_object.append(self.phone_label)
-        self.frame_object.append(self.phone_entry)
+        # self.frame_object.append(self.phone_label)
+        # self.frame_object.append(self.phone_entry)
 
 
     def submit_info(self):
-        self.cursor.execute(f"insert into teacher\
-                            values({self.id_entry.get()}, \"{self.name_entry.get()}\", \"{self.lastname_entry.get()}\",\
-                                \"{self.dob_entry.get()}\", \"{self.nat_entry.get()}\", \"{self.gender_entry.get()}\",\
-                                \"{self.salary_entry.get()}\", \"{self.couns_entry.get()}\",\
-                                ((select id from adress order by 1 desc limit 1)+1)")
-        self.cursor.execute(f"insert into adress\
-                                values(((select id from adress order by 1 desc limit 1)+1), \
-                                    \"{self.street_entry.get()}\", {self.housenumber_entry.get()}\
-                                    \"{self.postalcode_entry.get()}\", \"{self.city_entry.get()}\", \"{self.phone_entry.get()}\")")
+        self.cursor.execute("select max(id) from adress")
+        adress_id = (self.cursor.fetchall())[0][0]+1
+        try:
+            self.cursor.execute(f"insert into adress\
+                                    values({adress_id}, \
+                                        \"{self.street_entry.get()}\", {self.housenumber_entry.get()},\
+                                        \"{self.postalcode_entry.get()}\", \"{self.city_entry.get()}\", \"{self.phone_entry.get()}\")")
+
+            self.cursor.execute(f"insert into teacher (first_name, last_name, date_of_birth, nationality, gender, salary, study_counselor, fk_adress_id)\
+                                values( \"{self.name_entry.get()}\", \"{self.lastname_entry.get()}\",\
+                                    \"{self.dob_entry.get()}\", \"{self.nat_entry.get()}\", \"{self.gender_entry.get()}\",\
+                                    \"{self.salary_entry.get()}\", \"{self.couns_entry.get()}\",\
+                                    {adress_id})")
+
+            self.database.commit()
+
+            self.succes_label = Label(self.frame,text="Teacher succesfully added!", fg='green').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+        except:
+            self.notsucces_label = Label(self.frame,text="Teacher can't be added, please try again", fg='red').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
