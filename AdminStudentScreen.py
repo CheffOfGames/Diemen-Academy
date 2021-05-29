@@ -80,6 +80,6 @@ class AdminStudentScreen(Screen):
 
                 self.database.commit()
 
-                self.succes_label = Label(self.frame,text="Student succesfully added!", fg='green').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+                self.succes_label = Label(self.frame,text="Student succesfully added!", fg='green').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
             except:
-                self.notsucces_label = Label(self.frame,text="Student can't be added, please try again", fg='red').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+                self.notsucces_label = Label(self.frame,text="Student can't be added, please try again", fg='red').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')

@@ -12,11 +12,11 @@ class AdminGradesScreen(Screen):
         self.passed_entry = Entry(self.frame)
         self.passed_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*0))
 
-        self.student_label = Label(self.frame,text="Student ID:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*1))
+        self.student_label = Label(self.frame,text="Student ID:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*1), anchor='center')
         self.student_entry = Entry(self.frame)
         self.student_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*1))
 
-        self.exam_label = Label(self.frame,text="Exam ID:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+        self.exam_label = Label(self.frame,text="Exam ID:").place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2), anchor='w')
         self.exam_entry = Entry(self.frame)
         self.exam_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*2))
 
@@ -28,6 +28,6 @@ class AdminGradesScreen(Screen):
                                 values({self.grade_entry.get()}, {self.passed_entry.get()},\
                                     {self.student_entry.get()}, {self.exam_entry.get()})")
             self.database.commit()
-            self.succes_label = Label(self.frame,text="Grade succesfully added!", fg='green').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+            self.succes_label = Label(self.frame,text="Grade succesfully added!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*4), anchor='center')
         except:
-            self.notsucces_label = Label(self.frame,text="Grade can't be added, please try again", fg='red').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+            self.notsucces_label = Label(self.frame,text="Grade can't be added, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*4), anchor='center')

@@ -57,47 +57,6 @@ class AdminTeacherScreen(Screen):
         self.phone_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*8))
 
         self.submit_button = Button(root, text="Submit", command=lambda: self.submit_info()).place(x=(self.width/2), y=(6*self.height/7), anchor='center')
- 
-# i think everything here that is commented out can be deleted...
-        # self.frame_object.append(self.id_label)
-        # self.frame_object.append(self.id_entry)
-
-        # self.frame_object.append(self.name_label)
-        # self.frame_object.append(self.name_entry)
-
-        # self.frame_object.append(self.lastname_label)
-        # self.frame_object.append(self.lastname_entry)
-
-        # self.frame_object.append(self.dob_label)
-        # self.frame_object.append(self.dob_entry)
-
-        # self.frame_object.append(self.nat_label)
-        # self.frame_object.append(self.nat_entry)
-
-        # self.frame_object.append(self.gender_label)
-        # self.frame_object.append(self.gender_entry)
-
-        # self.frame_object.append(self.salary_label)
-        # self.frame_object.append(self.salary_entry)
-
-        # self.frame_object.append(self.couns_label)
-        # self.frame_object.append(self.couns_entry)
-
-        # self.frame_object.append(self.postalcode_label)
-        # self.frame_object.append(self.postalcode_entry)
-
-        # self.frame_object.append(self.street_label)
-        # self.frame_object.append(self.street_entry)
-
-        # self.frame_object.append(self.housenumber_label)
-        # self.frame_object.append(self.housenumber_entry)
-
-        # self.frame_object.append(self.city_label)
-        # self.frame_object.append(self.city_entry)
-
-        # self.frame_object.append(self.phone_label)
-        # self.frame_object.append(self.phone_entry)
-
 
     def submit_info(self):
         self.cursor.execute("select max(id) from adress")
@@ -116,6 +75,6 @@ class AdminTeacherScreen(Screen):
 
             self.database.commit()
 
-            self.succes_label = Label(self.frame,text="Teacher succesfully added!", fg='green').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+            self.succes_label = Label(self.frame,text="Teacher succesfully added!", fg='green').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
         except:
-            self.notsucces_label = Label(self.frame,text="Teacher can't be added, please try again", fg='red').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*2))
+            self.notsucces_label = Label(self.frame,text="Teacher can't be added, please try again", fg='red').place(x=(self.width/2.31), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
