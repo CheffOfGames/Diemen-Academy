@@ -22,14 +22,25 @@ class LoginScreen(Screen):
 
     def login(self):
         self.current_user = str(self.user_entry.get()).lower()
-        if self.current_user == "teacher":
-            self.current_usertype = 1
-        elif self.current_user == "admin" or self.current_user == "administrator":
+
+        if self.current_user[0] == "t" and str(self.pass_entry.get()).lower() == "teach":
+            try :
+                self.current_user = int(self.current_user[1:])
+                self.cursor.execute(f"select id from teacher where id={self.current_user}")
+
+                if len(self.cursor.fetchall()) != 0 :
+                    self.current_usertype = 1
+                    self.changeScreen("Home", self.current_usertype)
+                else :
+                    pass
+            except :
+                pass # Error message
+
+        elif self.current_user[0] == "a" and str(self.pass_entry.get()).lower() == "root":
+            self.current_user = self.current_user[1:]
             self.current_usertype = 2
-        else :
+            self.changeScreen("Home", self.current_usertype)
+        else:
             self.current_usertype = 0
-
-        # if self.database has self.current_user: 
-        #     self.current_usertype = user_type
-
-        self.changeScreen("Home", self.current_usertype)
+            self.changeScreen("Home", self.current_usertype)
+            
