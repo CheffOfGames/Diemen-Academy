@@ -10,10 +10,10 @@ class HomeScreen(Screen):
             self.usertype = self.usertypes[usertype]
         except KeyError :
             print("Unknown usertype.")
-            self.changeScreen("Login")
+            self.logout()
         except :
             print("Something went wrong, please contact a System Administrator.")
-            self.changeScreen("Login")
+            self.logout()
         
         if self.usertype == "Student": # Student
              button_grades = Button(root,text="Grades",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Grades")).place(x= (self.width/5), y= (self.height/3))
