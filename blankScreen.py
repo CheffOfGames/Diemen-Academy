@@ -33,11 +33,8 @@ class Screen:
         if type(self).__name__ != "LoginScreen" :
             logout_button = Button(self.frame, width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)), text="Log out", command=lambda: self.logout()).place(x=int(self.width - self.width/5), y=int(self.height/50))
             if type(self).__name__ != "HomeScreen" :
-                home_button = Button(self.frame, width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)), text="Home", command=lambda: self.goHome(user=self.current_usertype)).place(x=int(self.width - self.width/2.5), y=int(self.height/50))
+                home_button = Button(self.frame, width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)), text="Home", command=lambda: self.changeScreen("Home", user=self.current_usertype)).place(x=int(self.width - self.width/2.5), y=int(self.height/50))
         self.canvas.pack()
-
-    def goHome(self, user:int=0) :
-        self.changeScreen("Home", user)
 
     def changeScreen(self, screen:str, user:int=0):
         if not self.screens.get(screen) :
