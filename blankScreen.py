@@ -51,4 +51,4 @@ class Screen:
         # Forget user information and change screens
         self.current_user = ""
         self.current_usertype = -1
-        self.changeScreen("Login")
+        self.changeScreen("Login", self.current_usertype)

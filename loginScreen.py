@@ -23,32 +23,44 @@ class LoginScreen(Screen):
     def login(self):
         self.current_user = str(self.user_entry.get()).lower()
 
-        if self.current_user[0] == "t" and str(self.pass_entry.get()).lower() == "teach":
+        if self.current_user[0] == "t":
             try :
                 self.current_user = int(self.current_user[1:])
                 self.cursor.execute(f"select id from teacher where id={self.current_user}")
 
                 if len(self.cursor.fetchall()) != 0 :
                     self.current_usertype = 1
-                    self.changeScreen("Home", self.current_usertype)
+
+                    self.cursor.execute(f"select id from teacher where id={self.current_user} and password={str(self.pass_entry.get())}")
+
+                    if len(self.cursor.fetchall()) != 0 :
+                        self.changeScreen("Home", self.current_usertype)
+                    else :
+                        self.error_popup("Wrong password")
                 else :
                     self.error_popup("Please enter a real id")
 
             except :
                 self.error_popup("Please enter a real id")
 
-        elif self.current_user[0] == "a" and str(self.pass_entry.get()).lower() == "root":
+        elif self.current_user[0] == "a" and str(self.pass_entry.get()) == "root":
             self.current_user = self.current_user[1:]
             self.current_usertype = 2
             self.changeScreen("Home", self.current_usertype)
         
         else:
             try :
-                self.cursor.execute(f"select id from teacher where id={self.current_user}")
+                self.cursor.execute(f"select id from student where id={self.current_user}")
 
                 if len(self.cursor.fetchall()) != 0 :
                     self.current_usertype = 0
-                    self.changeScreen("Home", self.current_usertype)
+
+                    self.cursor.execute(f"select id from student where id={self.current_user} and password={str(self.pass_entry.get())}")
+
+                    if len(self.cursor.fetchall()) != 0 :
+                        self.changeScreen("Home", self.current_usertype)
+                    else :
+                        self.error_popup("Wrong password")
                 else :
                     self.error_popup("Please enter a real id")
             except :
