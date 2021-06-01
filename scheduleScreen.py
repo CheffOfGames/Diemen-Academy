@@ -19,19 +19,23 @@ class ScheduleScreen(Screen):
         for i in range (5): #[2.7*self.height/9, 4.2*self.height/9, 5.7*self.height/9, 7.2*self.height/9]: #creates horizontal lines
             self.canvas.create_line(self.place,(2.5+i*1.2)*self.height/9,self.place*8,(2.5+i*1.2)*self.height/9)
 
-        button_next = Button(root, text=">", command=lambda: self.change_month(self.day.month, 1))
+        button_next = Button(root, text=">", command=lambda: self.change_month(1))
         button_next.place(x=19*self.width/20, y=self.height/2)
-        button_previous = Button(root, text="<", command=lambda: self.change_month(self.day.month, -1))
+        button_previous = Button(root, text="<", command=lambda: self.change_month(-1))
         button_previous.place(x=self.width/20, y=self.height/2)
 
         self.show_month()
 
-    def change_month(self, month, next_previous):
-        new = month+next_previous
+    def change_month(self, next_previous):
+        new = self.day.month+next_previous
+        newyear = self.day.year
         if new == 0:
             new = 12
-        print (self.day)
-        self.day = self.day.replace(month=new)
+            newyear -= 1
+        elif new == 13:
+            new = 1
+            newyear += 1
+        self.day = self.day.replace(month=new, year=newyear)
         for i in self.month_stuff:
             i.destroy()
         self.H = 0
@@ -40,7 +44,7 @@ class ScheduleScreen(Screen):
     
     def show_month(self):
         self.month_stuff = []
-        label_month = Label(self.root, text=str(calendar.month_name[self.day.month] ))
+        label_month = Label(self.root, text=f"{calendar.month_name[self.day.month]} {self.day.year}")
         label_month.config(font=("Courier", 12))
         label_month.place(x=self.width/2, y=self.height/8, anchor="center")
         self.month_stuff.append(label_month)
