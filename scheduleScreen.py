@@ -28,8 +28,9 @@ class ScheduleScreen(Screen):
 
     def change_month(self, month, next_previous):
         new = month+next_previous
-        if new == -1:
+        if new == 0:
             new = 12
+        print (self.day)
         self.day = self.day.replace(month=new)
         for i in self.month_stuff:
             i.destroy()
