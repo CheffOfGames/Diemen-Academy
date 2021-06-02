@@ -19,7 +19,7 @@ class GradesScreen(Screen):
                 self.canvas.create_rectangle(-1,place-self.height/20,self.width+1,place+self.height/20, fill="light grey", outline="")
             label_subject = Label(root,text=exams[i][0])
             label_subject.config(font=("Courier", 12))
-            label_subject.place(x=self.width/12, y=place,anchor="center"  )
+            label_subject.place(x=self.width/20, y=place,anchor="w"  )
 
             if exams[i][2] == 0:
                 label_grade = Label(root,text=exams[i][1], fg='red')
