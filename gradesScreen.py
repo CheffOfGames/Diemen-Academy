@@ -8,7 +8,7 @@ class GradesScreen(Screen):
         self.root.title("Grades Screen")
         place = self.height/6
 
-        self.cursor.execute(f" select a.course_name, b.grade, b.passed, c.date from course a, result b, exam c\
+        self.cursor.execute(f" select a.course_name, b.grade, b.passed, c.date, c.resit from course a, result b, exam c\
                                 where b.fk_student_id = {self.current_user}\
                                 and b.fk_exam_id = c.id\
                                 and a.id = c.fk_course_id ") 
@@ -17,7 +17,10 @@ class GradesScreen(Screen):
         for i in range (len(exams)):
             if i%2 == 0:
                 self.canvas.create_rectangle(-1,place-self.height/20,self.width+1,place+self.height/20, fill="light grey", outline="")
-            label_subject = Label(root,text=exams[i][0])
+            exam = exams[i][0]
+            if exams[i][4] == 1:
+                exam += ' Resit'
+            label_subject = Label(root,text=exam)
             label_subject.config(font=("Courier", 12))
             label_subject.place(x=self.width/20, y=place,anchor="w"  )
 

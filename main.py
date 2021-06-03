@@ -27,8 +27,8 @@ root.geometry(f"{width}x{height}+{x_pos}+{y_pos}")
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="password!", #your own pw
-  database="world" 
+  password="Ijgenweis11!", #your own pw
+  database="dump" 
   )
 
 # Current page
