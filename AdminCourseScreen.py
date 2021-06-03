@@ -20,8 +20,24 @@ class AdminCourseScreen(Screen):
         self.teacher_entry = Entry(self.frame)
         self.teacher_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*2))
 
-        self.submit_button = Button(root, text="Submit", command=lambda: self.submitcourse_info()).place(x=(self.width/2), y=(6*self.height/7), anchor='center')
+        self.show_button = Button(root, text="show", command=lambda: self.show_info()).place(x=(self.width/5), y=(6*self.height/7), anchor='center')
+        self.add_button = Button(root, text="add", command=lambda: self.submitcourse_info()).place(x=(2*self.width/5), y=(6*self.height/7), anchor='center')
+        self.delete_button = Button(root, text="delete", command=lambda: self.delete_info()).place(x=(3*self.width/5), y=(6*self.height/7), anchor='center')
+   
+    def delete_info(self):
+        try:
+            self.cursor.execute(f"delete from course where id={self.id_entry.get()}")
+            self.succes_label = Label(self.frame,text="Course succesfully deleted!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.database.commit()
+        except:
+            self.notsucces_label = Label(self.frame,text="Course can't be deleted, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
 
+
+    def show_info(self):
+        self.cursor.execute(f"select id, course_name from course")
+        infostudies = self.cursor.fetchall()
+        for i in range (len(infostudies)):
+            self.info_label= Label(self.frame, text=infostudies[i]).place(x=4*self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-4+i)))
 
     def submitcourse_info(self):
             self.cursor.execute("select max(id) from course")   
@@ -34,6 +50,6 @@ class AdminCourseScreen(Screen):
 
                 self.database.commit()
 
-                self.succes_label = Label(self.frame,text="Course succesfully added!", fg='green').place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*4), anchor='center')
+                self.succes_label = Label(self.frame,text="Course succesfully added!", fg='green').place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
             except:
-                self.notsucces_label = Label(self.frame,text="Course can't be added, please try again", fg='red').place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*4), anchor='center')
+                self.notsucces_label = Label(self.frame,text="Course can't be added, please try again", fg='red').place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')

@@ -59,44 +59,18 @@ class AdminTeacherScreen(Screen):
         self.show_button = Button(root, text="show", command=lambda: self.show_info()).place(x=(self.width/5), y=(6*self.height/7), anchor='center')
         self.add_button = Button(root, text="add", command=lambda: self.addinfo()).place(x=(2*self.width/5), y=(6*self.height/7), anchor='center')
         self.delete_button = Button(root, text="delete", command=lambda: self.delete_info()).place(x=(3*self.width/5), y=(6*self.height/7), anchor='center')
-        self.update_button = Button(root, text="update", command=lambda: self.update_info()).place(x=(4*self.width/5), y=(6*self.height/7), anchor='center')
+   
+#    doesnt work yet takes waaayyy too long 
+    #     self.update_button = Button(root, text="update", command=lambda: self.update_info()).place(x=(4*self.width/5), y=(6*self.height/7), anchor='center')
     
-    def update_info(self):
-        if self.name_entry.get() != '':
-            self.cursor.execute(f"update teacher set first_name = \'{self.name_entry.get()}\' where id = {self.id_entry.get()}")
-        elif self.lastname_entry.get() != '':
-            self.cursor.execute(f"update teacher set last_name = \'{self.lastname_entry.get()}\' where id = {self.id_entry.get()}")
-        elif self.dob_entry.get() != '':
-            self.cursor.execute(f"update teacher set date_of_birth = \'{self.dob_entry.get()}\' where id = {self.id_entry.get()}")
-        elif self.nat_entry.get() != '':
-            self.cursor.execute(f"update teacher set nationality = \'{self.nat_entry.get()}\' where id = {self.id_entry.get()}")
-        elif self.gender_entry.get() != '':
-            self.cursor.execute(f"update teacher set gender = \'{self.gender_entry.get()}\' where id = {self.id_entry.get()}")
-        elif self.salary_entry.get() != '':
-            self.cursor.execute(f"update teacher set salary = \'{self.salary_entry.get()}\' where id = {self.id_entry.get()}")
-        elif self.couns_entry.get() != '':
-            self.cursor.execute(f"update teacher set study_counselor = \'{self.couns_entry.get()}\' where id = {self.id_entry.get()}")
-        elif self.postalcode_entry.get() != '':
-            self.cursor.execute(f"update adress set postal_code = \'{self.postalcode_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
-        elif self.street_entry.get() != '':
-            self.cursor.execute(f"update adress set street = \'{self.street_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
-        elif self.housenumber_entry.get() != '':
-            self.cursor.execute(f"update adress set house_number = {self.housenumber_entry.get()} where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
-        elif self.city_entry.get() != '':
-            self.cursor.execute(f"update adress set city = \'{self.city_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
-        elif self.phone_entry.get() != '':
-            self.cursor.execute(f"update adress set phone = \'{self.phone_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
-        
-        
-
     def delete_info(self):
         try:
-            self.cursor.execute(f"delete from teacher where id={self.id_entry.get()}")
             self.cursor.execute(f"delete from adress where id=(select fk_adress_id from teacher where id = {self.id_entry.get()})")
-            self.succes_label = Label(self.frame,text="Teacher succesfully deleted!", fg='green').place(x=(self.width/2.3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.cursor.execute(f"delete from teacher where id={self.id_entry.get()}")
+            self.succes_label = Label(self.frame,text="Teacher succesfully deleted!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
             self.database.commit()
         except:
-            self.notsucces_label = Label(self.frame,text="Teacher can't be deleted, please try again", fg='red').place(x=(self.width/2.3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.notsucces_label = Label(self.frame,text="Teacher can't be deleted, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
 
 
     def show_info(self):
@@ -113,7 +87,7 @@ class AdminTeacherScreen(Screen):
                 self.info_label= Label(self.frame, text=info[i]).place(x=self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-4+i)))
                 self.info_in_a_list.append(self.info_label)
         except:
-            self.notsucces_label = Label(self.frame,text="enter valid id, please try again", fg='red').place(x=(self.width/2.3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.notsucces_label = Label(self.frame,text="enter valid id, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
 
 
     def addinfo(self):
@@ -133,6 +107,35 @@ class AdminTeacherScreen(Screen):
 
             self.database.commit()
 
-            self.succes_label = Label(self.frame,text="Teacher succesfully added!", fg='green').place(x=(self.width/2.3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.succes_label = Label(self.frame,text="Teacher succesfully added!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
         except:
-            self.notsucces_label = Label(self.frame,text="Teacher can't be added, please try again", fg='red').place(x=(self.width/2.3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.notsucces_label = Label(self.frame,text="Teacher can't be added, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+    
+    # def update_info(self):
+    #     if self.id_entry.get() != '':
+    #         if self.name_entry.get() != '':
+    #             self.cursor.execute(f"update teacher set first_name = \'{self.name_entry.get()}\' where id = {self.id_entry.get()}")
+            # elif self.lastname_entry.get() != '':
+            #     self.cursor.execute(f"update teacher set last_name = \'{self.lastname_entry.get()}\' where id = {self.id_entry.get()}")
+            # elif self.dob_entry.get() != '':
+            #     self.cursor.execute(f"update teacher set date_of_birth = \'{self.dob_entry.get()}\' where id = {self.id_entry.get()}")
+            # elif self.nat_entry.get() != '':
+            #     self.cursor.execute(f"update teacher set nationality = \'{self.nat_entry.get()}\' where id = {self.id_entry.get()}")
+            # elif self.gender_entry.get() != '':
+            #     self.cursor.execute(f"update teacher set gender = \'{self.gender_entry.get()}\' where id = {self.id_entry.get()}")
+            # elif self.salary_entry.get() != '':
+            #     self.cursor.execute(f"update teacher set salary = \'{self.salary_entry.get()}\' where id = {self.id_entry.get()}")
+            # elif self.couns_entry.get() != '':
+            #     self.cursor.execute(f"update teacher set study_counselor = \'{self.couns_entry.get()}\' where id = {self.id_entry.get()}")
+            # elif self.postalcode_entry.get() != '':
+            #     self.cursor.execute(f"update adress set postal_code = \'{self.postalcode_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
+            # elif self.street_entry.get() != '':
+            #     self.cursor.execute(f"update adress set street = \'{self.street_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
+            # elif self.housenumber_entry.get() != '':
+            #     self.cursor.execute(f"update adress set house_number = {self.housenumber_entry.get()} where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
+            # elif self.city_entry.get() != '':
+            #     self.cursor.execute(f"update adress set city = \'{self.city_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
+            # elif self.phone_entry.get() != '':
+            #     self.cursor.execute(f"update adress set phone = \'{self.phone_entry.get()}\' where id = (select fk_adress_id from teacher where id = {self.id_entry.get()})")
+            
+            

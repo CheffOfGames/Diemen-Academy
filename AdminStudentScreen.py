@@ -4,6 +4,9 @@ class AdminStudentScreen(Screen):
     def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
         super().__init__(root, screens, database, user=user, usertype=usertype)
 
+        self.id_label = Label(self.frame,text="Student ID:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-5))
+        self.id_entry = Entry(self.frame)
+        self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-5))
 
         self.name_label = Label(self.frame,text="Student Name:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-4))
         self.name_entry = Entry(self.frame)
@@ -61,9 +64,41 @@ class AdminStudentScreen(Screen):
         self.phone_entry = Entry(self.frame)
         self.phone_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*9))
 
-        self.submit_button = Button(root, text="Submit", command=lambda: self.submitstudent_info()).place(x=(self.width/2), y=(6*self.height/7), anchor='center')
+        self.show_button = Button(root, text="show", command=lambda: self.show_info()).place(x=(self.width/5), y=(6*self.height/7), anchor='center')
+        self.add_button = Button(root, text="add", command=lambda: self.addinfo()).place(x=(2*self.width/5), y=(6*self.height/7), anchor='center')
+        self.delete_button = Button(root, text="delete", command=lambda: self.delete_info()).place(x=(3*self.width/5), y=(6*self.height/7), anchor='center')
+   
+    def delete_info(self):
+        try:
+            self.cursor.execute(f"delete from student where id={self.id_entry.get()}")
+            self.cursor.execute(f"delete from adress where id=(select fk_adress_id from student where id = {self.id_entry.get()})")
+            self.succes_label = Label(self.frame,text="Student succesfully deleted!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*11), anchor='center')
+            self.database.commit()
+        except:
+            self.notsucces_label = Label(self.frame,text="Student can't be deleted, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*11), anchor='center')
 
-    def submitstudent_info(self):
+
+    def show_info(self):
+        self.cursor.execute(f"select id, study_name from study")
+        infostudies = self.cursor.fetchall()
+        for i in range (len(infostudies)):
+            self.info_label= Label(self.frame, text=infostudies[i]).place(x=4*self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-4+i)))
+        try:
+            for i in self.info_in_a_list:
+                i.destroy
+        except:
+            self.info_in_a_list = []
+
+        try:
+            self.cursor.execute(f"select * from student a, adress b where a.id = {self.id_entry.get()} and a.fk_adress_id=b.id")
+            info = self.cursor.fetchall()[0]
+            for i in range (len(info)):
+                self.info_label= Label(self.frame, text=info[i]).place(x=self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-5+i)))
+                self.info_in_a_list.append(self.info_label)
+        except:
+            self.notsucces_label = Label(self.frame,text="enter valid id, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*11), anchor='center')
+
+    def addinfo(self):
             self.cursor.execute("select max(id) from adress")   
             adress_id = (self.cursor.fetchall())[0][0]+1
             try:
@@ -80,6 +115,6 @@ class AdminStudentScreen(Screen):
 
                 self.database.commit()
 
-                self.succes_label = Label(self.frame,text="Student succesfully added!", fg='green').place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+                self.succes_label = Label(self.frame,text="Student succesfully added!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*11), anchor='center')
             except:
-                self.notsucces_label = Label(self.frame,text="Student can't be added, please try again", fg='red').place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+                self.notsucces_label = Label(self.frame,text="Student can't be added, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*11), anchor='center')
