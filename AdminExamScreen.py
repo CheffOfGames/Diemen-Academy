@@ -54,9 +54,16 @@ class AdminExamScreen(Screen):
 
         self.cursor.execute(f"select a.id, a.course_name, b.resit from course a, exam b where b.fk_course_id = a.id;")
         infostudies = self.cursor.fetchall()
+        self.cursor.execute(f"select a.id,b.course_name from exam a, course b where a.fk_course_id=b.id")
+        infoexams = self.cursor.fetchall()
         for i in range (len(infostudies)):
             self.info_label= Label(self.frame, text=infostudies[i]).place(x=4*self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-4+i)))
             self.info_in_a_list.append(i)
+        for i in range(len(infoexams)):
+            self.info_label= Label(self.frame, text=infoexams[i]).place(x=self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-4+i)))
+            self.info_in_a_list.append(i)
+    
+
 
     def submitgrade_info(self):
         try:
