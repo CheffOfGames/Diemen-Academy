@@ -22,7 +22,7 @@ class HomeScreen(Screen):
         elif self.current_usertype == 1: 
             # Set buttons to navigate to the correct screens
             Button(root,text="Subjects",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Subject")).place(x= (self.width/3), y= (self.height/3),anchor = 'center')
-            Button(root,text="Schedule",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Schedule")).place(x= (self.width/3*2), y= (self.height/3),anchor = 'center')
+            Button(root,text="Profile",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Profile")).place(x= (self.width/3*2), y= (self.height/3),anchor = 'center')
 
 
         # Set objects on screen for administrators
