@@ -39,18 +39,25 @@ class AdminExamScreen(Screen):
     def delete_info(self):
         try:
             self.cursor.execute(f"delete from exam where id={self.id_entry.get()}")
-            self.succes_label = Label(self.frame,text="Grade succesfully deleted!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.succes_label = Label(self.frame,text="Exam succesfully deleted!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
             self.database.commit()
         except:
-            self.notsucces_label = Label(self.frame,text="Grade can't be deleted, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
+            self.notsucces_label = Label(self.frame,text="Exam can't be deleted, please try again", fg='red').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
 
 
     def show_info(self):
+        try:
+            for i in self.info_in_a_list:
+                i.destroy
+        except:
+            self.info_in_a_list = []
+
         self.cursor.execute(f"select a.id, a.course_name, b.resit from course a, exam b where b.fk_course_id = a.id;")
         infostudies = self.cursor.fetchall()
         for i in range (len(infostudies)):
             self.info_label= Label(self.frame, text=infostudies[i]).place(x=4*self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-4+i)))
-        
+            self.info_in_a_list.append(i)
+
     def submitgrade_info(self):
         try:
             self.cursor.execute(f"insert into exam ( room, resit, date, starts_at, ends_at, fk_course_id)\

@@ -18,8 +18,7 @@ class HomeScreen(Screen):
         if self.usertype == "Student": # Student
              button_grades = Button(root,text="Grades",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Grades")).place(x= (self.width/3), y= (self.height/3),anchor = 'center')
              button_schedule = Button(root,text="Schedule",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Schedule")).place(x= (self.width/3*2), y= (self.height/3),anchor = 'center')
-             button_profile = Button(root,text="Profile",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Profile")).place(x= (self.width/3), y= (self.height/3*2),anchor = 'center')
-             button_enroll = Button(root,text="Enroll",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Enroll")).place(x= (self.width/3*2), y= (self.height/3*2),anchor = 'center')
+             button_profile = Button(root,text="Profile",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Profile")).place(x= (self.width/2), y= (self.height/3*2),anchor = 'center')
 
         elif self.usertype == "Teacher": # Teacher
             button_subjects = Button(root,text="Subjects",width=int(((self.width/50)-(self.width/500))*1.5), height=int((self.height/100)-(self.height/160)),command = lambda: self.changeScreen("Subject")).place(x= (self.width/3), y= (self.height/3),anchor = 'center')

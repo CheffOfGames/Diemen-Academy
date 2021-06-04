@@ -1,5 +1,4 @@
 from tkinter import *
-from enrollScreen import *
 from gradesScreen import *
 from homeScreen import *
 from loginScreen import *
@@ -14,7 +13,7 @@ from AdminExamScreen import *
 
 
 # Define variables
-screens = {"Enroll": EnrollScreen, "Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen, "AdminCourse":AdminCourseScreen, "AdminGrades":AdminGradesScreen, "AdminStudent":AdminStudentScreen, "AdminTeacher":AdminTeacherScreen,"AdminExam":AdminExamScreen}
+screens = {"Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen, "AdminCourse":AdminCourseScreen, "AdminGrades":AdminGradesScreen, "AdminStudent":AdminStudentScreen, "AdminTeacher":AdminTeacherScreen,"AdminExam":AdminExamScreen}
 
 # Set the starting screen
 root = Tk()
@@ -27,8 +26,8 @@ root.geometry(f"{width}x{height}+{x_pos}+{y_pos}")
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="Ijgenweis11!", #your own pw
-  database="dump" 
+  password="password!",
+  database="database"
   )
 
 # Current page

@@ -4,6 +4,10 @@ class AdminGradesScreen(Screen):
     def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
         super().__init__(root, screens, database, user=user, usertype=usertype)
 
+        self.id_label = Label(self.frame,text="ID:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-2))
+        self.id_entry = Entry(self.frame)
+        self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
+
         self.grade_label = Label(self.frame,text="Grade:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-1))
         self.grade_entry = Entry(self.frame)
         self.grade_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
@@ -26,7 +30,7 @@ class AdminGradesScreen(Screen):
    
     def delete_info(self):
         try:
-            self.cursor.execute(f"delete from student where id={self.id_entry.get()}")
+            self.cursor.execute(f"delete from grade where id={self.id_entry.get()}")
             self.succes_label = Label(self.frame,text="Grade succesfully deleted!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*10), anchor='center')
             self.database.commit()
         except:

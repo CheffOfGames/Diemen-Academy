@@ -70,8 +70,8 @@ class AdminStudentScreen(Screen):
    
     def delete_info(self):
         try:
-            self.cursor.execute(f"delete from student where id={self.id_entry.get()}")
             self.cursor.execute(f"delete from adress where id=(select fk_adress_id from student where id = {self.id_entry.get()})")
+            self.cursor.execute(f"delete from student where id={self.id_entry.get()}")
             self.succes_label = Label(self.frame,text="Student succesfully deleted!", fg='green').place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*11), anchor='center')
             self.database.commit()
         except:

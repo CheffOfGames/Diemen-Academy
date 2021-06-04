@@ -4,6 +4,10 @@ class AdminCourseScreen(Screen):
     def __init__(self, root: Tk, screens: dict, database, user="", usertype:int=-1):
         super().__init__(root, screens, database, user=user, usertype=usertype)
 
+        self.id_label = Label(self.frame,text="Course ID:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-2))
+        self.id_entry = Entry(self.frame)
+        self.id_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-2))
+
         self.name_label = Label(self.frame,text="Course Name:").place(x=(self.width/3), y=(self.height/2.5)+((self.height*0.034)*-1))
         self.name_entry = Entry(self.frame)
         self.name_entry.place(x=(self.width/2), y=(self.height/2.5)+((self.height*0.034)*-1))
@@ -34,11 +38,18 @@ class AdminCourseScreen(Screen):
 
 
     def show_info(self):
+        try:
+            for i in self.info_in_a_list:
+                i.destroy
+        except:
+            self.info_in_a_list = []
+
         self.cursor.execute(f"select id, course_name from course")
         infostudies = self.cursor.fetchall()
         for i in range (len(infostudies)):
             self.info_label= Label(self.frame, text=infostudies[i]).place(x=4*self.width/6, y=(self.height/2.5)+((self.height*0.034)*(-4+i)))
-
+            self.info_in_a_list.append(i)
+            
     def submitcourse_info(self):
             self.cursor.execute("select max(id) from course")   
             course_id = (self.cursor.fetchall())[0][0]+1
