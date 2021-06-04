@@ -34,11 +34,14 @@ class LoginScreen(Screen):
 
                 # Grab the given id from the teacher table
                 self.cursor.execute(f"select id from teacher where id={self.current_user}")
+            except:
+                self.error_popup("Please enter a real id")
 
-                # Check if id exists
-                if len(self.cursor.fetchall()) != 0 :
+            # Check if id exists
+            if len(self.cursor.fetchall()) != 0 :
+                try: 
                     # Grab data if id and password match
-                    self.cursor.execute(f"select id from teacher where id={self.current_user} and password={str(self.pass_entry.get())}")
+                    self.cursor.execute(f"select id from teacher where id={self.current_user} and password='{str(self.pass_entry.get())}'")
 
                     # Check if password exists
                     if len(self.cursor.fetchall()) != 0 :
@@ -49,10 +52,11 @@ class LoginScreen(Screen):
                     # If there was a mistake, give error popup
                     else :
                         self.error_popup("Wrong password")
-                else :
-                    self.error_popup("Please enter a real id")
-            except:
+                except:
+                    self.error_popup("Wrong password entered")
+            else :
                 self.error_popup("Please enter a real id")
+            
 
         # Check for admin login and password (admin login is not in database thus has just a given password)
         elif self.current_user[0] == "a" and str(self.pass_entry.get()) == "root":
@@ -69,7 +73,7 @@ class LoginScreen(Screen):
 
                 if len(self.cursor.fetchall()) != 0 :
                     # Grab data if id and password match
-                    self.cursor.execute(f"select id from student where id={self.current_user} and password={str(self.pass_entry.get())}")
+                    self.cursor.execute(f"select id from student where id={self.current_user} and password='{str(self.pass_entry.get())}'")
 
                     # Check if password exists
                     if len(self.cursor.fetchall()) != 0 :
@@ -86,6 +90,7 @@ class LoginScreen(Screen):
                 self.error_popup("Please enter a real id")
 
     def error_popup(self, message) :
+        print(message)
         # If error is thrown, empty the username and password entry fields
         self.user_entry.delete(0, 'end')
         self.pass_entry.delete(0, 'end')
