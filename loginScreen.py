@@ -8,12 +8,12 @@ class LoginScreen(Screen):
         self.root.title("Login Screen")
 
         # Enter username field
-        self.user_label = Label(root,text="Student Number:").place(x=(self.width/2.70), y=(self.height/2.5))
+        Label(root,text="Student Number:").place(x=(self.width/2.70), y=(self.height/2.5))
         self.user_entry = Entry(root)
         self.user_entry.place(x=(self.width/2), y=(self.height/2.5))
 
         # Enter password field
-        self.pass_label = Label(root,text="Password:").place(x=(self.width/2.70),y= (self.height/2.3))
+        Label(root,text="Password:").place(x=(self.width/2.70),y= (self.height/2.3))
         self.pass_entry = Entry(root, show="*")
         self.pass_entry.place(x=(self.width/2), y=(self.height/2.3))
 
@@ -24,10 +24,11 @@ class LoginScreen(Screen):
         # Grab username
         self.current_user = str(self.user_entry.get()).lower()
 
-        # Try for errors while logging in
-        try :
-            # Check if teacher
-            if self.current_user[0] == "t":
+        
+        # Check if teacher
+        if self.current_user[0] == "t":
+            # Try for errors while logging in
+            try :
                 # Remove the "t" from username to leave the id
                 self.current_user = int(self.current_user[1:])
 
@@ -50,16 +51,19 @@ class LoginScreen(Screen):
                         self.error_popup("Wrong password")
                 else :
                     self.error_popup("Please enter a real id")
+            except:
+                self.error_popup("Please enter a real id")
 
-            # Check for admin login and password (admin login is not in database thus has just a given password)
-            elif self.current_user[0] == "a" and str(self.pass_entry.get()) == "root":
-                # Set correct username, usertype and change screens
-                self.current_user = self.current_user[1:]
-                self.current_usertype = 2
-                self.changeScreen("Home", self.current_usertype)
+        # Check for admin login and password (admin login is not in database thus has just a given password)
+        elif self.current_user[0] == "a" and str(self.pass_entry.get()) == "root":
+            # Set correct username, usertype and change screens
+            self.current_user = self.current_user[1:]
+            self.current_usertype = 2
+            self.changeScreen("Home", self.current_usertype)
             
-            # If not admin nor teacher, select student
-            else:
+        # If not admin nor teacher, select student
+        else:
+            try:
                 # Grab id if it is in student table
                 self.cursor.execute(f"select id from student where id={self.current_user}")
 
@@ -78,8 +82,8 @@ class LoginScreen(Screen):
                         self.error_popup("Wrong password")
                 else :
                     self.error_popup("Please enter a real id")
-        except :
-            self.error_popup("Please enter a real id")
+            except :
+                self.error_popup("Please enter a real id")
 
     def error_popup(self, message) :
         # If error is thrown, empty the username and password entry fields
