@@ -19,10 +19,8 @@ class ScheduleScreen(Screen):
         for i in range (5): #[2.7*self.height/9, 4.2*self.height/9, 5.7*self.height/9, 7.2*self.height/9]: #creates horizontal lines
             self.canvas.create_line(self.place,(2.5+i*1.2)*self.height/9,self.place*8,(2.5+i*1.2)*self.height/9)
 
-        button_next = Button(root, text=">", command=lambda: self.change_month(1))
-        button_next.place(x=19*self.width/20, y=self.height/2)
-        button_previous = Button(root, text="<", command=lambda: self.change_month(-1))
-        button_previous.place(x=self.width/20, y=self.height/2)
+        Button(root, text=">", command=lambda: self.change_month(1)).place(x=19*self.width/20, y=self.height/2)
+        Button(root, text="<", command=lambda: self.change_month(-1)).place(x=self.width/20, y=self.height/2)
 
         self.show_month()
 
