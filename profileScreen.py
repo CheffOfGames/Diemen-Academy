@@ -18,16 +18,16 @@ class ProfileScreen(Screen):
             profile_info = self.cursor.fetchall()[0]
 
             # Print userdata
-            self.personalinfo = Label(self.root, text=f"Name: {profile_info[0]} {profile_info[1]} \nBorn: {profile_info[2]}\
+            Label(self.root, text=f"Name: {profile_info[0]} {profile_info[1]} \nBorn: {profile_info[2]}\
                             \nNationality: {profile_info[3]} \nGender: {profile_info[4]}", justify='left').place(x =(self.width/4) , y= (self.height/7))
             # Check if email has been entered before printing
             if profile_info[5] == '  ':
-                self.schoolinfo = Label(self.root, text=f"Start Year: {profile_info[6]}\nStudy: {profile_info[7]}\nStudy Counselor: {profile_info[8]}", justify='left').place(x =(self.width/4) , y= (3*self.height/7))                  
+                Label(self.root, text=f"Start Year: {profile_info[6]}\nStudy: {profile_info[7]}\nStudy Counselor: {profile_info[8]}", justify='left').place(x =(self.width/4) , y= (3*self.height/7))                  
             else:
-                self.schoolinfo = Label(self.root, text=f"Email: {profile_info[5]} \nStart Year: {profile_info[6]}\nStudy: {profile_info[7]}\nStudy Counselor: {profile_info[8]}", justify='left').place(x =(self.width/4) , y= (3*self.height/7))                  
+                Label(self.root, text=f"Email: {profile_info[5]} \nStart Year: {profile_info[6]}\nStudy: {profile_info[7]}\nStudy Counselor: {profile_info[8]}", justify='left').place(x =(self.width/4) , y= (3*self.height/7))                  
 
             # Print contact information
-            self.contactinfo = Label(self.root, text=f"{profile_info[9]} {profile_info[10]} \n{profile_info[11]} \n{profile_info[12]} \n{profile_info[13]}", justify='left').place(x =(self.width/4) , y= (5*self.height/7))            
+            Label(self.root, text=f"{profile_info[9]} {profile_info[10]} \n{profile_info[11]} \n{profile_info[12]} \n{profile_info[13]}", justify='left').place(x =(self.width/4) , y= (5*self.height/7))            
 
             # Add rectangle in place for picture
             self.canvas.create_rectangle((self.width/15), (self.height/7), (self.width/6), (self.height/2.5))
@@ -41,8 +41,8 @@ class ProfileScreen(Screen):
             profile_info = self.cursor.fetchall()[0]
             
             # Print and place userdata
-            self.personalinfo = Label(self.root, text=f"Name: {profile_info[0]} {profile_info[1]} \nBorn: {profile_info[2]}\
+            Label(self.root, text=f"Name: {profile_info[0]} {profile_info[1]} \nBorn: {profile_info[2]}\
                             \nNationality: {profile_info[3]} \nGender: {profile_info[4]} \nSalary: {profile_info[5]} \nStudent Counselor (Y/N): {profile_info[6]} ", justify='left').place(x =(self.width/4) , y= (self.height/7))
 
             # Print and place contact information
-            self.contactinfo = Label(self.root, text=f"{profile_info[7]} {profile_info[8]} \n{profile_info[9]} \n{profile_info[10]} \n{profile_info[11]}", justify='left').place(x =(self.width/4) , y= (5*self.height/7))
+            Label(self.root, text=f"{profile_info[7]} {profile_info[8]} \n{profile_info[9]} \n{profile_info[10]} \n{profile_info[11]}", justify='left').place(x =(self.width/4) , y= (5*self.height/7))
