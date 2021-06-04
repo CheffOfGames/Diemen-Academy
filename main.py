@@ -11,7 +11,6 @@ from AdminStudentScreen import *
 from AdminTeacherScreen import *
 from AdminExamScreen import *
 
-
 # Define variables
 screens = {"Grades": GradesScreen, "Home": HomeScreen, "Login": LoginScreen, "Profile": ProfileScreen, "Schedule": ScheduleScreen, "Subject": SubjectScreen, "AdminCourse":AdminCourseScreen, "AdminGrades":AdminGradesScreen, "AdminStudent":AdminStudentScreen, "AdminTeacher":AdminTeacherScreen,"AdminExam":AdminExamScreen}
 
